@@ -1,82 +1,31 @@
 [% USE Koha %]
 [% USE Branches %]
 
-<title>Table</title>
+<title>[% title %]</title>
 
-[%
-	data = [
-			{
-				first = 'Jill'
-				last = 'Smith'
-				age = '50'
-			}
-			
-			{
-				first = 'Eve'
-				last = 'Jackson'
-				age = '94'
-			}
-			
-			{
-				first = 'Anna'
-				last = 'Jim'
-				age = '9'
-			}
-			
-			{
-				first = 'Debbie'
-				last = 'Charlo'
-				age = '4'
-			}
-			]
-%]
-
-<head>
-
-	This is the required table.
-	
-</head>
-
-<body>
 <table class="table">
 	<thead>
 		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Age</th>
+			<th>cardnumber</th>
+			<th>surname</th>
+			<th>email</th>
+			<th>phone</th>
 		</tr>
 	</thead>
 	<tbody>
-		[% FOREACH x IN data %]
+		[% FOREACH x IN results %]
 		<tr>
-			<td>[% x.first %]</td>
-			<td>[% x.last %]</td>
-			<td>[% x.age %]</td>
+			<td>[% x.cardnumber %]</td>
+			<td>[% x.surname %]</td>
+			<td>[% x.email %]</td>
+			<td>[% x.phone %]</td>
 		</tr>
 		[% END %]
 	</tbody>
 </table>
 
+<center>
+ <form action="/cgi-bin/koha/tablePdf.pl">
+ <input type="submit" value="Print as pdf" class="btn" />
 
-<table style="width:100%">
-	<tr>
-		<th>Firstname</th>
-		<th>Lastname</th>
-		<th>Age</th>
-	</tr>
-	[% FOREACH x IN data %]
-		<tr>
-			<td>[% x.first %]</td>
-			<td>[% x.last %]</td>
-			<td>[% x.age %]</td>
-		</tr>
-	[% END %]
-	<tr>
-		<td>Eve</td>
-		<td>Jackson</td>
-		<td>94</td>
-	</tr>
-</table>
-		
-
-</body>
+<a href="test2.pl?op=pdf" class="btn">Print as pdf</a>
