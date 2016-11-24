@@ -18,17 +18,24 @@ my ( $template, $borrowernumber, $cookie ) = get_template_and_user(
     }
 );
 
+
+
 my ($theme, $news_lang, $availablethemes) = C4::Templates::themelanguage(C4::Context->config('opachtdocs'),'table.tt','opac',$input);
 
-$template->param(
+my ($sth, $item);
+my $sql = "SELECT cardnumber, surname, email, phone from borrowers";
 
-	title => 'Title',
-	data => {
-		
-    	first     => 'James',
-    	last     => 'Watson',
-    	age      => '25',
-	},
+$sth = $dbh->prepare($sql);
+$sth->execute(); 
+
+my @rows;
+while($item = $sth->fetchrow_hashref){
+        push @rows, $item;
+}
+
+$template->param(
+		title => 'Table', 
+        results => \@rows
 );
 
 output_html_with_http_headers $input, $cookie, $template->output;
