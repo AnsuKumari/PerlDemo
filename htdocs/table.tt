@@ -1,0 +1,82 @@
+[% USE Koha %]
+[% USE Branches %]
+
+<title>Table</title>
+
+[%
+	data = [
+			{
+				first = 'Jill'
+				last = 'Smith'
+				age = '50'
+			}
+			
+			{
+				first = 'Eve'
+				last = 'Jackson'
+				age = '94'
+			}
+			
+			{
+				first = 'Anna'
+				last = 'Jim'
+				age = '9'
+			}
+			
+			{
+				first = 'Debbie'
+				last = 'Charlo'
+				age = '4'
+			}
+			]
+%]
+
+<head>
+
+	This is the required table.
+	
+</head>
+
+<body>
+<table class="table">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Age</th>
+		</tr>
+	</thead>
+	<tbody>
+		[% FOREACH x IN data %]
+		<tr>
+			<td>[% x.first %]</td>
+			<td>[% x.last %]</td>
+			<td>[% x.age %]</td>
+		</tr>
+		[% END %]
+	</tbody>
+</table>
+
+
+<table style="width:100%">
+	<tr>
+		<th>Firstname</th>
+		<th>Lastname</th>
+		<th>Age</th>
+	</tr>
+	[% FOREACH x IN data %]
+		<tr>
+			<td>[% x.first %]</td>
+			<td>[% x.last %]</td>
+			<td>[% x.age %]</td>
+		</tr>
+	[% END %]
+	<tr>
+		<td>Eve</td>
+		<td>Jackson</td>
+		<td>94</td>
+	</tr>
+</table>
+		
+
+</body>
