@@ -25,7 +25,5 @@
 </table>
 
 <center>
- <form action="/cgi-bin/koha/tablePdf.pl">
+ <form action="/cgi-bin/koha/pdf.pl">
  <input type="submit" value="Print as pdf" class="btn" />
-
-<a href="test2.pl?op=pdf" class="btn">Print as pdf</a>
